@@ -4,16 +4,17 @@
 #
 ###############################################################################
 
-bundle agent pavel.cf 
+bundle agent touch-file.cf 
 {
-meta:
-  "tags" slist => { "autorun" };
-
 methods:
-        "Per platform rules" usebundle => platform;
+        "Create file in /tmp" usebundle => bundle("arg");
+
+files: 
+"/tmp/foo"
+create => true, 
 
 reports: 
 verbose_mode:: 
-"$(this.bundle): Platform log";  
+"$(this.bundle): foo creation in /tmp";  
 
 }
