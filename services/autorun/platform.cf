@@ -4,7 +4,7 @@
 #
 ###############################################################################
 
-bundle agent platform.cf 
+bundle agent platform 
 {
 methods:
         "OS Common rules" usebundle => os-common;

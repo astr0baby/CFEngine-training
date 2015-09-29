@@ -4,7 +4,7 @@
 #
 ###############################################################################
 
-bundle agent touch-file.cf 
+bundle agent touch-file 
 {
 
 files: 

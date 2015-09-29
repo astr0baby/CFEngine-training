@@ -4,7 +4,7 @@
 #
 ###############################################################################
 
-bundle agent pavel.cf 
+bundle agent pavel 
 {
 meta:
   "tags" slist => { "autorun" };
