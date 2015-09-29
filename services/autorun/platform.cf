@@ -10,7 +10,6 @@ methods:
         "OS Common rules" usebundle => os_common;
         "Packages installation" usebundle => package_installation"; 
 reports: 
-verbose_mode:: 
-"$(this.bundle): os-common log";  
+"$(sys.flavor), $(this.bundle): os-common log";  
 
 }
