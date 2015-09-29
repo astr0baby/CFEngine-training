@@ -6,8 +6,6 @@
 
 bundle agent touch-file.cf 
 {
-methods:
-        "Create file in /tmp" usebundle => bundle("arg");
 
 files: 
 "/tmp/foo"
