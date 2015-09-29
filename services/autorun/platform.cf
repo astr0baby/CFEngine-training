@@ -1,13 +1,13 @@
 ###############################################################################
 #
-#   platform.cf - autorun policy for platform 
+#   platform - autorun policy for platform 
 #
 ###############################################################################
 
 bundle agent platform 
 {
 methods:
-        "OS Common rules" usebundle => os-common;
+        "OS Common rules" usebundle => os_common;
 
 reports: 
 verbose_mode:: 
