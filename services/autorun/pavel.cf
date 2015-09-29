@@ -1,0 +1,19 @@
+###############################################################################
+#
+#   pavel.cf - autorun policy for Pavel 
+#
+###############################################################################
+
+bundle agent pavel.cf 
+{
+meta:
+  "tags" slist => { "autorun" };
+
+methods:
+        "Per platform rules" usebundle => platform;
+
+reports: 
+verbose_mode:: 
+"$(this.bundle): Platform log";  
+
+}

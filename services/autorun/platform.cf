@@ -1,0 +1,16 @@
+###############################################################################
+#
+#   platform.cf - autorun policy for platform 
+#
+###############################################################################
+
+bundle agent platform.cf 
+{
+methods:
+        "OS Common rules" usebundle => os-common;
+
+reports: 
+verbose_mode:: 
+"$(this.bundle): os-common log";  
+
+}

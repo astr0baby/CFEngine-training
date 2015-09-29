@@ -1,0 +1,19 @@
+###############################################################################
+#
+#   touch-file.cf - autorun policy for touch file in /tmp 
+#
+###############################################################################
+
+bundle agent pavel.cf 
+{
+meta:
+  "tags" slist => { "autorun" };
+
+methods:
+        "Per platform rules" usebundle => platform;
+
+reports: 
+verbose_mode:: 
+"$(this.bundle): Platform log";  
+
+}
