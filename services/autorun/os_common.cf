@@ -7,7 +7,7 @@
 bundle agent os_common 
 {
 methods:
-        "Create test file in /tmp " usebundle => touch_file, 
+        "Create test file in /tmp " usebundle => touch_file;  
         "Create and set /etc/motd file" usebundle => motd_set;
 reports: 
 verbose_mode:: 
