@@ -1,10 +1,10 @@
 ###############################################################################
 #
-#   touch-file.cf - autorun policy for touch file in /tmp 
+#   touch_file - autorun policy for touch file in /tmp 
 #
 ###############################################################################
 
-bundle agent touch-file 
+bundle agent touch_file 
 {
 
 files: 
