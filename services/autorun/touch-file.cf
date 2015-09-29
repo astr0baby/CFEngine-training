@@ -9,7 +9,7 @@ bundle agent touch-file.cf
 
 files: 
 "/tmp/foo"
-create => true, 
+create => "true"; 
 
 reports: 
 verbose_mode:: 
