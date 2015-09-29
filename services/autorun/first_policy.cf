@@ -1,0 +1,19 @@
+###############################################################################
+#
+#   pavel - autorun policy entrypoint 
+#
+###############################################################################
+
+bundle agent first_policy 
+{
+meta:
+  "tags" slist => { "autorun" };
+
+methods:
+        "Per platform rules" usebundle => platform;
+
+reports: 
+verbose_mode:: 
+"$(this.bundle): Platform log";  
+
+}

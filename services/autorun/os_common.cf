@@ -1,0 +1,16 @@
+###############################################################################
+#
+#   os_common - autorun policy for os-common 
+#
+###############################################################################
+
+bundle agent os_common 
+{
+methods:
+        "Create test file in /tmp " usebundle => touch_file;
+
+reports: 
+verbose_mode:: 
+"$(this.bundle): tmp file log";  
+
+}

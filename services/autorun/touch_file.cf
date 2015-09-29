@@ -1,0 +1,18 @@
+###############################################################################
+#
+#   touch_file - autorun policy for touch file in /tmp 
+#
+###############################################################################
+
+bundle agent touch_file 
+{
+
+files: 
+"/tmp/foo"
+create => "true"; 
+
+reports: 
+verbose_mode:: 
+"$(this.bundle): foo creation in /tmp";  
+
+}
