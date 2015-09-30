@@ -1,8 +1,5 @@
 bundle agent add_repositories
 {
-  vars:
-     "repo_url"		string => "http://aptutl01.webhuis.nl:3142/";
-  
   files:
     centos_6::
       "/etc/yum.conf"
