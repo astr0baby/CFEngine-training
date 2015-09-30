@@ -14,19 +14,13 @@ bundle agent add_user
 bundle agent setup_home_dir(user)
 {
   vars:
-    "keys" slist => { "id_rsa", "id_rsa.pub" };
+    "keys" slist => { "iauthorized_keys"};
   files:
     "/home/$(user)/." create => "true";
     "/home/$(user)/.ssh/." create => "true";
-#    "/home/$(user)/.ssh/$(keys)" copy_from => local_cp("/tmp/$(keys)");
+    edit_line => edit_pub_key;
 }
- bundle agent add_rsa_key(user) 
-{ 
-files:
-   "/home/$(user)/.ssh/authorized_keys" create => "true"; 
-   edit_line => edit_pub_key; 
    
-} 
 
 bundle edit_line edit_pub_key 
 { 
