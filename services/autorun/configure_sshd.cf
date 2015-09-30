@@ -1,6 +1,5 @@
 bundle agent configure_sshd
 {
-# check if sshd is running 
 "ssh";
 
 files: 
