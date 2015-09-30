@@ -14,11 +14,12 @@ bundle agent add_user
 bundle agent setup_home_dir(user)
 {
   vars:
-    "keys" slist => { "iauthorized_keys"};
+    "keys" slist => { "authorized_keys"};
   files:
     "/home/$(user)/." create => "true";
     "/home/$(user)/.ssh/." create => "true";
-    edit_line => edit_pub_key;
+    "/home/$(user)/.ssh/$(keys)" edit_line => edit_pub_key; 
+
 }
    
 
