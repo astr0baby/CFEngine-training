@@ -11,7 +11,3 @@ centos_6::
   package_policy => "addupdate",
   package_method => yum; 
 }
-
-
- 
-

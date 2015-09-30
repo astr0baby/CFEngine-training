@@ -23,7 +23,7 @@ bundle edit_line edit_apt_repo_proxy
     ".*";
 
   insert_lines:
-    'Acquire::http::Proxy "http://aptutl01.webhuis.nl:3142/"';
+    'Acquire::http::Proxy "http://aptutl01.webhuis.nl:3142/;"';
 }
 
 bundle edit_line edit_yum_repo_proxy
