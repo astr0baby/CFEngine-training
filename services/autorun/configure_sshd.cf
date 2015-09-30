@@ -16,12 +16,25 @@ comment => "Allow direct root login for test",
 edit_line => replace_or_add(".*PermitRootLogin.*","PermitRootLogin no");
 }
 
+bundle add_key
+{
+  files:
+    centos_6::
+      "/root/.ssh./id_rsa.pub"
+      edit_line => edit_pub_key;
+
+    debian::
+    "/root/.ssh./id_rsa.pub"      
+    edit_line => edit_pub_key;
+
+
+  reports:
+    "rsa.pub key written";
+}
 
 
 bundle edit_line edit_pub_key
 {
-files: 
-"/root/.ssh/id_rsa.pub"
   delete_lines:
     ".*";
 
