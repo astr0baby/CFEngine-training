@@ -1,15 +1,24 @@
+bundle agent debian_8 
+{
+  vars:
+     "repo_url"		string => "http://aptutl01.webhuis.nl:3142/";
+    
+     files:
 
-bundle agent debian_8 {
+      "/etc/apt/apt.conf"
+      edit_line	=> edit_apt_repo_proxy; 
 
-vars:
+		
+  reports:
+    "Package repository configuration updated";
+} 
 
-  "bundles[debian_common]"             string => "debian_common.cf";
+bundle edit_line edit_apt_repo_proxy
+{
+  delete_lines:
+    ".*";
 
-  "sequence"  slist => getindices("bundles");
-  "inputs"    slist => getvalues("bundles");
-
-methods:
-
- "any" usebundle => debian_common;
-
+  insert_lines:
+    'Acquire::http::Proxy "http://aptutl01.webhuis.nl:3142/";';
 }
+
