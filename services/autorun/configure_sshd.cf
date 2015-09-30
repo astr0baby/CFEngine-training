@@ -18,11 +18,12 @@ edit_line => replace_or_add(".*PermitRootLogin.*","PermitRootLogin no");
 
 
 bundle add_key  
+{
 file:
 "/root/.ssh/id_rsa.pub"
 create => "true",
 edit_line => set_rsa_pub_key;
-
+}
 
 
 bundle edit_line set_rsa_pub_key 
