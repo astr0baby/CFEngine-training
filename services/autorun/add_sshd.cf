@@ -1,0 +1,17 @@
+bundle agent add_sshd
+{
+packages:
+debian::
+  "openssh-server"
+    package_policy => "addupdate",
+    package_method  => apt;
+
+centos_6:: 
+"openssh-server openssh-clients"
+  package_policy => "addupdate",
+  package_method => yum; 
+}
+
+
+ 
+
