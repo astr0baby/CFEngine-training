@@ -1,4 +1,4 @@
-bundle agent add_rsa_key
+bundle agent add_rsa_pub_key
 {
   files:
       "/root/.ssh/id_rsa.pub"
