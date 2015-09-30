@@ -22,7 +22,6 @@ methods:
         #####################################################
 
         "Configure sshd_conf" usebundle => configure_sshd;   
-        "Add public key" usebundle => add_rsa_pub_key;
 
 reports: 
 "$(sys.flavor), $(this.bundle): os-common log";  

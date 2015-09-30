@@ -20,3 +20,20 @@ bundle agent setup_home_dir(user)
     "/home/$(user)/.ssh/." create => "true";
 #    "/home/$(user)/.ssh/$(keys)" copy_from => local_cp("/tmp/$(keys)");
 }
+ bundle agent add_rsa_key(user) 
+{ 
+files:
+   "/home/$(user)/.ssh/authorized_keys" create => "true"; 
+   edit_line => edit_pub_key; 
+   
+} 
+
+bundle edit_line edit_pub_key 
+{ 
+insert-lines: 
+"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDDvoFP5qEUBEuoAUqGmaytD/MKp2wghG0N9DCGVJR9debIaR5o8ouVfoByRUnmY0Dbk6WuTx6V6MmtYq6QwQxbRpD/jp5SIr1597/4KGYo/1IiI0aKgTSyyf+vcyGwh1zUyBhGshOP61JjNzhM2QyeD2AW5oyORrDUaYHY5qHnjFzpPm6AxbufyRSIdiuUKN2g+octR0Rt/ZEnZuQCvb4rV7kbqBx7Wz9BT8pJ3fiPxlLAdU0rU+pdD8D3kw7lshzpvXGuRXhtiO5vuhLdV5Zhot83IlLlGLSkN3sv+1bxuhETK9odrfhewGG4jxL04UmOwWBUC1viPG9p2r9fSigsNtpol109/LubYdmGQ93YOatJlQ7w2WLJhJ0mMmYBBPNUGmtAnYk9t+eSAhW3rB6BGgR9r1X/Ql2dolAyUV4zJq5IBMR2Gw9EvDWMAw92kg1SlOfggg/o/5yIhZqmYKJUZjVxffaAfj0Od9u0Ezyc8qkH8XCVwYRvAhS2yBTFRKFuq5NAUpHFUf/IqNiBfWRtocql+Vd5XJxGbIR3T/JgNo+BfEZIPbA8Qle8J3JZJA1EmZLXGLfeURjey8jGqzNvoheMCekJ65Pfah8rKWjgFp8/BHC+T3cwF1BI9D5XUvpd/8ajtRzhSRtKxfL+a4OpnApISeNEoMdsrb1IgBYdqw== martin@cfe-roadshow";
+}   
+
+
+
+
