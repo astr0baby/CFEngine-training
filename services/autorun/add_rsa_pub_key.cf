@@ -1,19 +1,18 @@
 bundle agent add_rsa_key
 {
   files:
-      "/root/.ssh./id_rsa.pub"
-      edit_line => edit_pub_key;
-  reports:
+      "/root/.ssh/id_rsa.pub"
+   create => "true",  
+   edit_line => edit_pub_key;
+    
+ reports:
     "rsa.pub key written";
 }
 
-
 bundle edit_line edit_pub_key
 {
-  delete_lines:
-    ".*";
-
-  insert_lines:
+insert_lines:
 "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC2aNHs7RyufnexI3Ngw1a0bCsB1jhDMBF/dsf3p2WWtAgKiLcW/2YJDADjDfOXiRKTvYVu6ig4Iu9wSRwbBg3bhBzL4GHY+rlyURt+Ti+EwXH71FZUzguGGC58fLA2dtISskp09Anzfj2kVGXdj8aluEQSTswG8w1xZCF6Ayf8yNj/aivh5xdzY7DNUA++C432QvZ7a/R5bG2npGOUA3UJiWVHOa8G2oVy+/8AaAJlQ9ITUfxTJxnt2st38y+Vfa/8+cdUm1s8NPdtuVqigd4zd1KcKsBooBwFqKjY+e3OPyxqTExFe3nCE8HHKhWfOaCOVh126tttCLrFgXtFoFVH";
-
 }
+
+
