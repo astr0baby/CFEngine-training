@@ -1,40 +1,12 @@
 bundle agent debian_common {
 
 vars:
-
- x86_64::
-  "arch"                       string => "amd64";
- !x86_64::
-  "arch"                       string => "${sys.arch}";
-
- any::
-
-  "pkg[debian-goodies]"        string => "*";
-  "pkg[openssh-server]"        string => "*";
-
-  "cfengine_version"           string => "3.6.6-1";
-  "cfengine_package"           string => "cfengine-community_${cfengine_version}_${arch}.deb";
-  "cpkg[cfengine-community]"   string => "${cfengine_version}";
-
-
-methods:
- 
- "Configure apt mirror"     usebundle => aptdeb_mirror;
- "Install common packages"  usebundle => packages("debian_common.pkg");
- "CFEngine custom package"  usebundle => get_custom_package("${cfengine_package}");
- "Update CFEngine"          usebundle => custom_packages("debian_common.cpkg");
-
-}
-
-bundle agent aptdeb_mirror {
-
-vars:
   "mirror" string => "http://aptutl01.webhuis.nl:3142/";
 
 files:
   "/etc/apt/apt.conf"
           create  => "true",
-        edit_line => edit_apt_mirror($(mirror)),
+          edit_line => edit_apt_mirror($(mirror)),
           classes => if_repaired("update_mirror");
 
 commands:
@@ -46,54 +18,3 @@ commands:
 
 }
 
-####################################################
-
-bundle agent packages (pkgs_array) {
-
-vars:
-  "package_name"         slist => getindices("$(pkgs_array)");
-
-packages:
-
-  "$(package_name)"
-    package_policy             => "addupdate",
-    package_method             => apt,
-    package_version            => "$($(pkgs_array)[$(package_name)])";
-}
-
-bundle agent custom_packages (cpkgs_array) {
-
-vars:
-
-  "custom_package_name"  slist => getindices("$(cpkgs_array)");
-
-packages:
-
-  "$(custom_package_name)"
-    package_policy  => "addupdate",
-    package_method  => dpkg_version("/var/cache/apt/archives"),
-    package_select  => "==",
-    package_version => "$($(cpkgs_array)[$(custom_package_name)])";
-
-}
-
-bundle agent get_custom_package(custom_package) {
-
-files:
-
- "/var/cache/apt/archives/${custom_package}"
-            comment => "Copy package",
-             handle => "update_files_inputs_packages",
-          copy_from => u_rcp("${do_roadshow.master_dynamic}/packages/${custom_package}","${sys.policy_hub}"),
-             action => u_immediate;
-
-}
-
-bundle agent restart_sshd {
-
-commands:
-  "service ssh restart"
-     handle => "restart_sshd",
-    comment => "restarting sshd";
-
-}
