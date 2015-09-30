@@ -16,7 +16,7 @@ comment => "Allow direct root login for test",
 edit_line => replace_or_add(".*PermitRootLogin.*","PermitRootLogin no");
 
 reports:
-Configure /etc/ssh/sshd_conf";
+"Configure /etc/ssh/sshd_conf";
 
 }
 
