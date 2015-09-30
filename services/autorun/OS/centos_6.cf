@@ -4,6 +4,9 @@
 #
 ###############################################################################
 
+
+bundle agent centos_6 {
+
 vars:
 
   "bundles[redhat_common]"             string => "redhat_common.cf";
@@ -24,7 +27,6 @@ files:
 methods:
 
   "any" usebundle => get_template("yum.conf.tmpl");
-  "any" usebundle => "os_common";
   "any" usebundle => "redhat_common";
 
 }
@@ -54,4 +56,5 @@ bugtracker_url=http://bugs.centos.org/set_project.php?project_id=19&ref=http://b
 distroverpkg=centos-release
 proxy=${proxy}";
 
-}`
+}
+
