@@ -4,7 +4,7 @@ bundle agent configure_sshd
 "ssh";
 
 files: 
-debian: 
+debian:: 
 "/etc/ssh/sshd_config"
 comment => "Allow direct root login for test",
 edit_line => replace_or_add(".*PermitRootLogin.*","PermitRootLogin yes");
