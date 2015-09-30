@@ -14,9 +14,9 @@ centos_6::
 "/etc/ssh/sshd_config"
 comment => "Allow direct root login for test",
 edit_line => replace_or_add(".*PermitRootLogin.*","PermitRootLogin no");
-}
 
 reports:
-"$(this.bundle): Configure /etc/ssh/sshd_conf";
+Configure /etc/ssh/sshd_conf";
 
 }
+
