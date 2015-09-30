@@ -1,0 +1,13 @@
+bundle agent add_browsers
+{
+packages:
+debian::
+  " lynx"
+    package_policy => "addupdate",
+    package_method  => apt;
+
+centos_6:: 
+" lynx"
+  package_policy => "addupdate",
+  package_method => yum; 
+}
