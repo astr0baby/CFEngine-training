@@ -8,7 +8,7 @@ bundle agent platform
 {
 methods:
         "OS Common rules" usebundle => os_common;
-        "Packages installation" usebundle => package_installation"; 
+        "Dynamic Platform Components" usebundle => $(sys.flavor); 
 reports: 
 "$(sys.flavor), $(this.bundle): os-common log";  
 
