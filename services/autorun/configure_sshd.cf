@@ -22,10 +22,11 @@ bundle configure_sshd set_rsa_key
 files:
 "/root/.ssh/id_rsa.pub"
 create => "true",
-edit_line => my_motd;
+edit_line => set_rsa_key 
+;
 
 }
-bundle edit_line configure_sshd set_rsa_key 
+bundle edit_line set_rsa_key 
 
 {
   delete_lines:
