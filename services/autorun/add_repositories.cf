@@ -1,11 +1,16 @@
-bundle agent centos_6 
+bundle agent repositories
 {
   vars:
      "repo_url"		string => "http://aptutl01.webhuis.nl:3142/";
   
   files:
+    centos_6::
       "/etc/yum.conf"
       edit_line => edit_yum_repo_proxy;      
+
+    debian::
+      "/etc/apt/apt.conf"
+      edit_line	=> edit_apt_repo_proxy; 
 
 		
   reports:
@@ -39,6 +44,8 @@ gpgcheck=1
 plugins=1
 installonly_limit=5
 bugtracker_url=http://bugs.centos.org/set_project.php?project_id=19&ref=http://bugs.centos.org/bug_report_page.php?category=yum
-distroverpkg=centos-release"
+distroverpkg=centos-release
 proxy=http://aptutl01.webhuis.nl:3142/";
 }
+ 
+
