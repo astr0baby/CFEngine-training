@@ -19,4 +19,4 @@ edit_line => replace_or_add(".*PermitRootLogin.*","PermitRootLogin no");
 reports:
 "$(this.bundle): Configure /etc/ssh/sshd_conf";
 
-
+}
