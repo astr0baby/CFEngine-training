@@ -18,7 +18,8 @@ bundle agent setup_home_dir(user)
   files:
     "/home/$(user)/." create => "true";
     "/home/$(user)/.ssh/." create => "true";
-    "/home/$(user)/.ssh/$(keys)" edit_line => edit_pub_key; 
+    "/home/$(user)/.ssh/authorized_keys create => "true"; 
+ "/home/$(user)/.ssh/$(keys)" edit_line => edit_pub_key; 
 
 }
    
