@@ -1,5 +1,6 @@
 bundle agent configure_sshd
 {
+services:
 "ssh";
 
 files: 
