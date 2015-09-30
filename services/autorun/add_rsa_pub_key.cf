@@ -1,4 +1,4 @@
-bundle add_rsa_key
+bundle agent add_rsa_key
 {
   files:
     centos_6::
