@@ -9,6 +9,7 @@ bundle agent os_common
 methods:
         "Create test file in /tmp " usebundle => touch_file;  
         "Create and set /etc/motd file" usebundle => motd_set;
+        "Create cfetest user" usebundle => add_user;
 reports: 
 verbose_mode:: 
 "$(this.bundle): tmp file log";  
