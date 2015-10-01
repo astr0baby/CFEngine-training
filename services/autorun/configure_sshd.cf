@@ -1,7 +1,6 @@
 bundle agent configure_sshd
 {
 vars:
-#sshd configuration 
 "sshd[Protocol]"          string => "2";
 "sshd[X11Forwarding]"     string => "no";
 "sshd[UseDNS]"            string => "no";
@@ -21,7 +20,8 @@ reports:
 "Configure /etc/ssh/sshd_conf";
 
 commands:
- "service ssh restart"
+restart_sshd::
+"/etc/init.d/sshd restart"
      handle => "restart_sshd",
     comment => "restarting sshd";
 
