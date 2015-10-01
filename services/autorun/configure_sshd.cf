@@ -22,7 +22,7 @@ reports:
 
 commands:
 restart_sshd::
-"/etc/init.d/sshd restart"
+"/etc/init.d/ssh restart"
      handle => "restart_sshd",
     comment => "restarting sshd";
 
