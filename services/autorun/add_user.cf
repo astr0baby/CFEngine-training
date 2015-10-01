@@ -18,25 +18,8 @@ bundle agent setup_home_dir(user)
   files:
     "/home/$(user)/.ssh/$(keys)" create => "true"; 
     "/home/$(user)/.ssh/$(keys)" edit_line => edit_pub_key; 
-}
-
-
-bundle agent set_permissions_ssh_directory(users,group_primary)
-{
-files:
-    "/home/$(user)/.ssh/"
-     perms   => mog("700", "$(users)", "$(group_primary)");
-}
-
-
-
-bundle agent set_permissions_ssh_authorized_key(users,group_primary) 
-{
-files: 
-    "/home/$(user)/.ssh/$(keys)"
      perms   => mog("600", "$(users)", "$(group_primary)"); 
 }
-
 
    
 bundle edit_line edit_pub_key 
