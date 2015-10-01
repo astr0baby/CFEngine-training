@@ -14,19 +14,22 @@ bundle agent add_user
 
 bundle agent setup_home_dir(users)
 {
-  vars:
-    "keys" slist => { "authorized_keys"};
   files:
-   "/home/$(users)/.ssh/$(keys)" 
-     perms => mog("700", "$(users)","users"), 
-     create => "true", 
-    "/home/$(users)/.ssh/$(keys)" edit_line => edit_pub_key; 
+
+        "/home/$(users)/."
+            create => "true",
+            perms => mog("755", "$(users)", "users");
+
+        "/home/$(users)/.ssh/."
+            create => "true",
+            perms => mog("700", "$(users)", "users");
+
+        "/home/$(users)/.ssh/authorized_keys"
+            create => "true",
+            perms => mog("600", "$(users)", "users"),
+            edit_line => edit_pub_key; 
+
 }
-
-
-
-
-
    
 bundle edit_line edit_pub_key 
 { 
