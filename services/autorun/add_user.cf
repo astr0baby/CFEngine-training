@@ -12,7 +12,7 @@ bundle agent add_user
 
 }
 
-bundle agent setup_home_dir(user)
+bundle agent setup_home_dir(users)
 {
   vars:
     "keys" slist => { "authorized_keys"};
