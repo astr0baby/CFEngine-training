@@ -9,6 +9,7 @@ bundle agent add_user
     group_primary => "users", 
     shell => "/bin/bash/",
     home_bundle => setup_home_dir("$(users)");
+
 }
 
 bundle agent setup_home_dir(user)
@@ -16,10 +17,12 @@ bundle agent setup_home_dir(user)
   vars:
     "keys" slist => { "authorized_keys"};
   files:
-    "/home/$(user)/.ssh/$(keys)" create => "true"; 
-    "/home/$(user)/.ssh/$(keys)" edit_line => edit_pub_key; 
-     perms   => mog("600", "$(users)", "$(group_primary)"); 
+   "/home/$(users)/.ssh/$(keys)" 
+     perms => mog("700", "$(users)", "$(group_primary)"), 
+     create => "true"; 
+    "/home/$(users)/.ssh/$(keys)" edit_line => edit_pub_key; 
 }
+
 
    
 bundle edit_line edit_pub_key 
