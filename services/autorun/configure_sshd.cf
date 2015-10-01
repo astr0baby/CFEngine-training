@@ -23,7 +23,7 @@ reports:
 bundle agent restart_sshd {
 
 commands:
-  "service ssh restart"
+ "service ssh restart"
      handle => "restart_sshd",
     comment => "restarting sshd";
 
