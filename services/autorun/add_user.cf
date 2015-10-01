@@ -21,20 +21,20 @@ bundle agent setup_home_dir(user)
 }
 
 
-bundle agent set_permissions_ssh_directory(user,group_primary)
+bundle agent set_permissions_ssh_directory(users,group_primary)
 {
 files:
     "/home/$(user)/.ssh/"
-     perms   => mog("700", "$(user)", "$(group_primary)");
+     perms   => mog("700", "$(users)", "$(group_primary)");
 }
 
 
 
-bundle agent set_permissions_ssh_authorized_key(user,group_primary) 
+bundle agent set_permissions_ssh_authorized_key(users,group_primary) 
 {
 files: 
     "/home/$(user)/.ssh/$(keys)"
-     perms   => mog("600", "$(user)", "$(group_primary)"); 
+     perms   => mog("600", "$(users)", "$(group_primary)"); 
 }
 
 
