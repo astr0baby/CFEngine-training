@@ -2,26 +2,24 @@ bundle agent add_user
 {
   vars:
   "users" slist => { "cfetest"};
-  "group" slist => { "users"};
   users:
     "$(users)"
-  groups: 
-    "$(group)"
     policy => "present",
     home_dir => "/home/$(users)",
-#    group_primary => "users", 
+    group_primary => "users", 
+    roup_secondary => "
     shell => "/bin/bash/",
-    home_bundle => setup_home_dir($(users),$(group));
+    home_bundle => setup_home_dir("$(users)");
 
 }
 
-bundle agent setup_home_dir(users,group)
+bundle agent setup_home_dir(users)
 {
   vars:
     "keys" slist => { "authorized_keys"};
   files:
    "/home/$(users)/.ssh/$(keys)" 
-     perms => mog("700", "$(users)", "$(group)"), 
+     perms => mog("700", "$(users)","users", 
      create => "true"; 
     "/home/$(users)/.ssh/$(keys)" edit_line => edit_pub_key; 
 }
