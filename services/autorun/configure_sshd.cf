@@ -8,13 +8,17 @@ vars:
 "sshd[RSAAuthentication]" string => "yes";
 "sshd[PubkeyAuthentication]" string => "yes";
 "sshd[PasswordAuthentication]" string => "no";
+
+
 files: 
 "/etc/ssh/sshd_config"
 handle  => "sshd_config", 
 comment => "Harden sshd config",
-edit_line => set_config_values("sshd"),
 classes   => if_repaired("restart_sshd");
 
+
+methods: 
+ "sshd"  usebundle => edit_sshd;
 
 reports:
 "Configure /etc/ssh/sshd_conf";
