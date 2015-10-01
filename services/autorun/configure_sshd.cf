@@ -1,8 +1,5 @@
 bundle agent configure_sshd
 {
-services:
-"ssh";
-
 vars:
 #sshd configuration 
 "sshd[Protocol]"          string => "2";
