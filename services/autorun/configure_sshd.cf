@@ -5,7 +5,7 @@ vars:
 "sshd[X11Forwarding]"     string => "no";
 "sshd[UseDNS]"            string => "no";
 "sshd[PermitRootLogin]"   string => "no"; 
-"sshd[PermitRootLogin]"   string => "yes";
+"sshd[RSAAuthentication]" string => "yes";
 "sshd[PubkeyAuthentication]" string => "yes";
 
 files: 
