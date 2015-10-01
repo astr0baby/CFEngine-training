@@ -7,7 +7,7 @@ vars:
 "sshd[PermitRootLogin]"   string => "no"; 
 "sshd[RSAAuthentication]" string => "yes";
 "sshd[PubkeyAuthentication]" string => "yes";
-
+"sshd[PasswordAuthentication]" string => "no";
 files: 
 "/etc/ssh/sshd_config"
 handle  => "sshd_config", 
