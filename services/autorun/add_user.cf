@@ -25,7 +25,7 @@ bundle agent setup_home_dir(user)
 
 bundle agent set_permissions_ssh_directory(user)
 {
-files"
+files:
     "/home/$(user)/.ssh/"
      perms   => mog("700", "$(user)", "$(group)");
 }
@@ -34,7 +34,7 @@ files"
 
 bundle agent set_permissions_ssh_authorized_key(user) 
 {
-files" 
+files: 
     "/home/$(user)/.ssh/$(keys)"
      perms   => mog("600", "$(user)", "$(group)"); 
 }
