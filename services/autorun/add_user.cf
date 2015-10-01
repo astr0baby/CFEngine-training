@@ -1,7 +1,7 @@
 bundle agent add_user 
 {
   vars:
-  "users" slist => { "cftest" };
+  "users" slist => { "cfetest" };
   users:
     "$(users)"
     policy => "present",
