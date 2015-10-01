@@ -14,11 +14,8 @@ files:
 "/etc/ssh/sshd_config"
 handle  => "sshd_config", 
 comment => "Harden sshd config",
+edit_line => set_config_values("configure_sshd.sshd"),
 classes   => if_repaired("restart_sshd");
-
-
-methods: 
- "sshd"  usebundle => edit_sshd;
 
 reports:
 "Configure /etc/ssh/sshd_conf";
@@ -30,3 +27,6 @@ restart_sshd::
     comment => "restarting sshd";
 
 }
+
+
+
