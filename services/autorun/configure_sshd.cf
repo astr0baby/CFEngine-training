@@ -3,21 +3,25 @@ bundle agent configure_sshd
 services:
 "ssh";
 
+vars:
+#sshd configuration 
+"sshd[Protocol]"          string => "2";
+"sshd[X11Forwarding]"     string => "no";
+"sshd[UseDNS]"            string => "no";
+"sshd[PermitRootLogin]"   string => "no"; 
+"sshd[PermitRootLogin]"   string => "yes";
+"sshd[PubkeyAuthentication]" string => "yes";
+
 files: 
-debian:: 
 "/etc/ssh/sshd_config"
-comment => "Allow direct root login for test",
-edit_line => replace_or_add(".*PermitRootLogin.*","PermitRootLogin no");
-edit_line => replace_or_add(".*RSAAuthentication.*", "RSAAuthentication yes");
-edit_line => replace_or_add(".*PubkeyAuthentication.*", "PubkeyAuthentication yes");
+handle  => "sshd_config", 
+comment => "Harden sshd config",
+edit_line => set_config_values("sshd"),
+classes   => if_repaired("restart_sshd");
 
 
 reports:
 "Configure /etc/ssh/sshd_conf";
-
-}
-
-bundle agent restart_sshd {
 
 commands:
  "service ssh restart"
