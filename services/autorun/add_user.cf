@@ -1,7 +1,7 @@
 bundle agent add_user 
 {
   vars:
-  "users" slist => { "cfetest" "pavel" "david" "arjengel"};
+  "users" slist => { "cfetest", "pavel", "david", "arjengel"};
   users:
     "$(users)"
     policy => "present",
