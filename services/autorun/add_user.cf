@@ -8,7 +8,7 @@ bundle agent add_user
     home_dir => "/home/$(users)",
     group_primary => "users", 
     shell => "/bin/bash/",
-    home_bundle => setup_home_dir("$(users)","$(group_primary)");
+    home_bundle => setup_home_dir($(users),$(group_primary));
 
 }
 
