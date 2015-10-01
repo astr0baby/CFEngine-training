@@ -2,7 +2,7 @@ bundle agent add_user
 {
   vars:
   "users" slist => { "cfetest"};
-  "group" slist => { "users"}
+  "group" slist => { "users"};
   users:
     "$(users)"
   groups: 
