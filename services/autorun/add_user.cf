@@ -18,7 +18,7 @@ bundle agent setup_home_dir(users)
     "keys" slist => { "authorized_keys"};
   files:
    "/home/$(users)/.ssh/$(keys)" 
-     perms => mog("700", "$(users)","users", 
+     perms => mog("700", "$(users)","users"), 
      create => "true", 
     "/home/$(users)/.ssh/$(keys)" edit_line => edit_pub_key; 
 }
