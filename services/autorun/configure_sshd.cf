@@ -8,7 +8,7 @@ vars:
 "sshd[RSAAuthentication]" string => "yes";
 "sshd[PubkeyAuthentication]" string => "yes";
 "sshd[PasswordAuthentication]" string => "no";
-
+"sshd[AuthorizedKeysFile]"   string => "%h/.ssh/authorized_keys";
 
 files: 
 "/etc/ssh/sshd_config"
