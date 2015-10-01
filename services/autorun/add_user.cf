@@ -7,7 +7,6 @@ bundle agent add_user
     policy => "present",
     home_dir => "/home/$(users)",
     group_primary => "users", 
-    roup_secondary => "
     shell => "/bin/bash/",
     home_bundle => setup_home_dir("$(users)");
 
