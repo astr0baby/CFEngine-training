@@ -6,7 +6,7 @@ bundle agent add_user
     "$(users)"
     policy => "present",
     home_dir => "/home/$(users)",
-    group_primary => "users",
+    group => "users",
     shell => "/bin/bash/",
     home_bundle => setup_home_dir("$(users)");
 }
@@ -18,11 +18,28 @@ bundle agent setup_home_dir(user)
   files:
     "/home/$(user)/." create => "true";
     "/home/$(user)/.ssh/." create => "true";
-    perms => mog("700","${user}","${group_primary}"), 
     "/home/$(user)/.ssh/$(keys)" create => "true"; 
-    perms => mog("600","${user}","${group_primary}";), 
     "/home/$(user)/.ssh/$(keys)" edit_line => edit_pub_key; 
 }
+
+
+bundle agent set_permissions_ssh_directory(user)
+{
+files"
+    "/home/$(user)/.ssh/"
+     perms   => mog("700", "$(user)", "$(group)");
+}
+
+
+
+bundle agent set_permissions_ssh_authorized_key(user) 
+{
+files" 
+    "/home/$(user)/.ssh/$(keys)"
+     perms   => mog("600", "$(user)", "$(group)"); 
+}
+
+
    
 bundle edit_line edit_pub_key 
 { 
