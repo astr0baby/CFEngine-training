@@ -1,4 +1,4 @@
-bundle agent configure_sshd_conf 
+bundle agent configure_sshd 
 {
 
 files: 
