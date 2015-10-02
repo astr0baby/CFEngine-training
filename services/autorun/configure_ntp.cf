@@ -1,13 +1,12 @@
 bundle agent configure_ntp 
 {
 vars:
-"ntp["server]"          string => "10.168.0.7";
+"server" string => "10.168.0.7";
 
 files: 
 "/etc/ntp.conf"
-handle  => "ntp_config", 
 comment => "Configure ntp client",
-edit_line => set_config_values("configure_ntp.ntp"),
+edit_line => ntp_conf_edit 
 classes   => if_repaired("restart_ntp");
 
 reports:
@@ -21,5 +20,34 @@ restart_sshd::
 
 }
 
+bundle edit_line ntp_conf_edit 
+{
+  delete_lines:
+    ".*";
 
+  insert_lines:
+    "server 10.168.0.7" 
+}
+
+
+bundle agent time_management
+    {
+     vars:
+
+      any::
+
+       "ntp_server" string => "10.168.0.7";
+
+     commands:
+
+      any::
+
+          "/usr/sbin/ntpdate $(ntp_server)"
+
+         contain => silent;
+
+reports:
+"Set time";
+
+    }
 
