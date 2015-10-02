@@ -1,0 +1,24 @@
+bundle agent configure_resolv_conf 
+{
+files: 
+"/etc/resolv.conf"
+comment => "Configure resolv.conf",
+edit_line => resolv_conf_edit, 
+
+reports:
+"Configure /etc/resolv.conf";
+
+}
+
+bundle edit_line resolv_conf_edit 
+{
+  delete_lines:
+    ".*";
+
+  insert_lines:
+     "search webhuis.nl" 
+     "server 10.168.0.7"; 
+    
+}
+
+

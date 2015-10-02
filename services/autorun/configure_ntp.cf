@@ -1,7 +1,5 @@
 bundle agent configure_ntp 
 {
-vars:
-"server" string => "10.168.0.7";
 
 files: 
 "/etc/ntp.conf"
@@ -13,10 +11,10 @@ reports:
 "Configure /etc/ntp.conf";
 
 commands:
-restart_sshd::
+restart_ntp::
 "/etc/init.d/ntp restart"
      handle => "restart_ntp",
-    comment => "restarting ntp";
+     comment => "restarting ntp";
 
 }
 
