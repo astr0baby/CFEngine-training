@@ -5,7 +5,8 @@ files:
 "/etc/ssh/sshd_config"
 comment => "Configure sshd server",
 edit_line => sshd_conf_edit, 
-classes   => if_repaired("restart_sshd");
+classes   => if_repaired("restart_sshd"),
+classes   => if_ok("ssh"); 
 
 commands:
 restart_sshd::
