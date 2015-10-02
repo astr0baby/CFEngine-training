@@ -2,6 +2,7 @@ bundle agent configure_resolv_conf
 {
 files: 
 "/etc/resolv.conf"
+perms => mog("0644", "root", "root"),
 comment => "Configure resolv.conf",
 edit_line => resolv_conf_edit; 
 
