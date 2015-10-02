@@ -16,11 +16,12 @@ restart_sshd::
      comment => "restarting ssh";
 
 services: 
-"check_ssh_state" 
+check_ssh_state::  
 service_policy => "start";
 
 reports:
 "$(this.bundle) /etc/ssh/sshd_config";
+"$(check_ssh_state)";
 }
 
 bundle edit_line sshd_conf_edit 
