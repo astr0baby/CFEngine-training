@@ -7,14 +7,18 @@ comment => "Configure sshd server",
 edit_line => sshd_conf_edit, 
 classes   => if_repaired("restart_sshd");
 
-reports:
-"Configure /etc/ssh/sshd_config";
-
 commands:
 restart_sshd::
 "/etc/init.d/ssh restart"
      handle => "restart_ssh",
      comment => "restarting ssh";
+
+services: 
+"ssh" 
+service_policy => "start";
+
+reports:
+"Configure /etc/ssh/sshd_config";
 
 }
 
