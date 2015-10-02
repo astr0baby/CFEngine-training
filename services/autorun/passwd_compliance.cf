@@ -18,15 +18,15 @@ report_changes => "content";
 }
 
 
-bundle changes detect_all_change
+body changes detect_all_change
 {
-hash           => "md5";
+  hash           => "md5";
+  report_changes => "content";
+  update         => "yes";
 }
 
 
-
-
-bundle edit_line original_passwd_file 
+body edit_line original_passwd_file 
 
 {
 insert_lines:
