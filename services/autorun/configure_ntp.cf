@@ -7,14 +7,18 @@ comment => "Configure ntp client",
 edit_line => ntp_conf_edit, 
 classes   => if_repaired("restart_ntp");
 
-reports:
-"Configure /etc/ntp.conf";
-
 commands:
 restart_ntp::
 "/etc/init.d/ntp restart"
      handle => "restart_ntp",
      comment => "restarting ntp";
+
+services:
+"ntp"
+service_policy => "start";
+
+reports:
+"$(this.bundle) /etc/ntp.conf";
 
 }
 

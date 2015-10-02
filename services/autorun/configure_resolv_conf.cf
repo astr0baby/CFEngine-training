@@ -6,7 +6,7 @@ comment => "Configure resolv.conf",
 edit_line => resolv_conf_edit; 
 
 reports:
-"Configure /etc/resolv.conf";
+"$(this.bundle) /etc/resolv.conf";
 
 }
 

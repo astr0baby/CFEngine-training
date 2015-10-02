@@ -18,7 +18,7 @@ services:
 service_policy => "start";
 
 reports:
-"Configure /etc/ssh/sshd_config";
+"$(this.bundle) /etc/ssh/sshd_config";
 
 }
 
@@ -62,8 +62,6 @@ bundle edit_line sshd_conf_edit
 "PermitRootLogin no";
 "UsePAM yes";
 "UseDNS no";
-
-
 }
 
 

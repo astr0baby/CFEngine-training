@@ -38,8 +38,7 @@ comment => "Configure rsyslog logging",
 edit_line => rsyslog_logrotate_edit;
 
 reports:
-"$(this.bundle) Configure /etc/logrotate.d/rsyslog";
-
+"$(this.bundle) logrotate /etc/logrotate.conf /etc/logrotate.d/";
 }
 
 
