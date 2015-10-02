@@ -40,12 +40,6 @@ edit_line => rsyslog_logrotate_edit;
 reports:
 "Configure /etc/logrotate.d/rsyslog";
 
-commands:
-restart_rsyslog::
-"/etc/init.d/rsyslog restart"
-     handle => "restart_rsyslog",
-     comment => "restarting rsyslog";
-
 }
 
 bundle edit_line logrotate_conf_edit 
