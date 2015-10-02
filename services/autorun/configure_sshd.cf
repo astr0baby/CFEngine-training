@@ -19,7 +19,7 @@ services:
 service_policy => "start";
 
 reports:
-"$(this.bundle) /etc/ssh/sshd_config",
+"$(this.bundle) /etc/ssh/sshd_config";
 "$(check_ssh_state) status of ssh";
 }
 
