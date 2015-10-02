@@ -24,6 +24,7 @@ methods:
         "Configure sshd_conf" usebundle => configure_sshd;   
         "Configure ntp client" usebundle => configure_ntp;
         "Configure resolv.conf" usebundle => configure_resolv_conf;
+        "Configure rsyslog stuff" usebundle => configure_logging;
 reports: 
 "$(sys.flavor), $(this.bundle): os-common log";  
 

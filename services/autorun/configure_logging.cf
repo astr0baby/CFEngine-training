@@ -1,7 +1,5 @@
 bundle agent configure_logging 
 {
-
-debian:: 
 files: 
 "/etc/logrotate.conf"
 comment => "Configure logrotate conf",
