@@ -13,8 +13,6 @@ files:
        edit_line    => original_passwd_file, 
        action       => background;
 
-
-report_changes => "content";
 }
 
 
