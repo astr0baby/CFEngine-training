@@ -1,7 +1,7 @@
 bundle agent configure_ntp 
 {
 vars:
-"ntp[]"server]"          string => "10.168.0.7";
+"ntp["server]"          string => "10.168.0.7";
 
 files: 
 "/etc/ntp.conf"
