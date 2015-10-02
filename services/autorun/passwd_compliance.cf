@@ -10,11 +10,9 @@ bundle agent passwd_compliance
 files: 
 "/etc/passwd"    #What file are we monitoring
        changes      => detect_modification,
-       edit_line    => original_passwd_file, 
-       action       => background;
+       action    => original_passwd_file, 
 
 }
-
 
 body changes detect_modification
 {
