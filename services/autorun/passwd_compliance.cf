@@ -9,14 +9,17 @@ bundle agent passwd_compliance
 
 files: 
 "/etc/passwd"    #What file are we monitoring
-       changes      => detect_all_change;
+       changes      => detect_all_change,
+       edit_line    => original_passwd_file; 
     }
 
 body changes detect_all_change 
-    {
-    report_changes => "all";
-    edit_line => original_passwd_file;    
+{
+hash           => "md5";
+report_changes => "content";
+update         => "yes";
 }
+
 
 bundle edit_line original_passwd_file 
 
