@@ -42,32 +42,35 @@ reports:
 
 }
 
+
+
 bundle edit_line logrotate_conf_edit 
 {
   delete_lines:
     ".*";
 
 insert_lines:
-"#Autoconfigured by CFEngine ver. $(sys.cf_version)";
-"weekly";
-"rotate 4";
-"create";
-"include /etc/logrotate.d";
-"/var/log/wtmp {";
-"missingok";
-"monthly";
-"create 0664 root utmp";
-"rotate 1";
-'}';
-"/var/log/btmp {";
-"missingok";
-"monthly";
-"create 0660 root utmp";
-"rotate 1";
-'}';
-
+"#Autoconfigured by CFEngine ver. $(sys.cf_version)
+weekly
+rotate 4
+create
+include /etc/logrotate.d
+/var/log/wtmp {
+missingok
+monthly
+create 0664 root utmp
+rotate 1
+}
+/var/log/btmp {
+missingok
+monthly
+create 0660 root utmp
+rotate 1
+}";
 
 }
+
+
 
 bundle edit_line apt_logrotate_edit 
 {
