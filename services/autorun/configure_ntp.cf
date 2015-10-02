@@ -26,7 +26,7 @@ bundle edit_line ntp_conf_edit
     ".*";
 
   insert_lines:
-    "server 10.168.0.7" 
+    "server 10.168.0.7"; 
 }
 
 
