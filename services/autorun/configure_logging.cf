@@ -22,7 +22,7 @@ comment => "Configure apt logging",
 edit_line => apt_logrotate_edit;
 
 reports: 
-"Configure /etc/logrotate.d/apt" 
+"Configure /etc/logrotate.d/apt"; 
 
 files:
 "/etc/logrotate.d/dpkg"
@@ -30,7 +30,7 @@ comment => "Configure dpkg logging",
 edit_line => dpkg_logrotate_edit;
 
 reports:
-"Configure /etc/logrotate.d/dpkg"
+"Configure /etc/logrotate.d/dpkg";
 
 files:
 "/etc/logrotate.d/rsyslog"
@@ -38,7 +38,7 @@ comment => "Configure rsyslog logging",
 edit_line => rsyslog_logrotate_edit;
 
 reports:
-"Configure /etc/logrotate.d/rsyslog"
+"Configure /etc/logrotate.d/rsyslog";
 
 commands:
 restart_rsyslog::
