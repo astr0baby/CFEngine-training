@@ -1,0 +1,25 @@
+bundle agent configure_ntp 
+{
+vars:
+"ntp[]"server]"          string => "10.168.0.7";
+
+files: 
+"/etc/ntp.conf"
+handle  => "ntp_config", 
+comment => "Configure ntp client",
+edit_line => set_config_values("configure_ntp.ntp"),
+classes   => if_repaired("restart_ntp");
+
+reports:
+"Configure /etc/ntp.conf";
+
+commands:
+restart_sshd::
+"/etc/init.d/ntp restart"
+     handle => "restart_ntp",
+    comment => "restarting ntp";
+
+}
+
+
+

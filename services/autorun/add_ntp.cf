@@ -1,13 +1,13 @@
-bundle agent add_sshd
+bundle agent add_ntp 
 {
 packages:
 debian::
-  "openssh-server"
+  "ntp"
     package_policy => "addupdate",
     package_method  => apt;
 
 centos_6:: 
-"openssh-server openssh-clients"
+"ntp"
   package_policy => "addupdate",
   package_method => yum; 
 }

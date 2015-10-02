@@ -16,13 +16,13 @@ methods:
         "OpenSSH server installation" usebundle => add_sshd;
         "Browser installation" usebundle => add_browsers;
         "Tools installation" usebundle => add_tools;
-
+        "NTP installation" usebundle => add_ntp;
         #####################################################
         # Configuration bundles 
         #####################################################
 
         "Configure sshd_conf" usebundle => configure_sshd;   
-
+        "Configure ntp client" usebundle => configure_ntp;
 reports: 
 "$(sys.flavor), $(this.bundle): os-common log";  
 
