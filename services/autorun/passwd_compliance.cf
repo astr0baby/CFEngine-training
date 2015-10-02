@@ -12,13 +12,18 @@ files:
        changes      => detect_all_change,
        edit_line    => original_passwd_file, 
        action       => background;
-    }
 
-body changes detect_all_change 
-{
-hash           => "md5";
+
 report_changes => "content";
 }
+
+
+body changes detect_all_change
+{
+hash           => "md5";
+}
+
+
 
 
 bundle edit_line original_passwd_file 
