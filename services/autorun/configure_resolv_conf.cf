@@ -3,7 +3,7 @@ bundle agent configure_resolv_conf
 files: 
 "/etc/resolv.conf"
 comment => "Configure resolv.conf",
-edit_line => resolv_conf_edit, 
+edit_line => resolv_conf_edit; 
 
 reports:
 "Configure /etc/resolv.conf";
