@@ -16,7 +16,7 @@ bundle edit_line resolv_conf_edit
     ".*";
 
   insert_lines:
-     "search webhuis.nl", 
+     "search webhuis.nl"; 
      "server 10.168.0.7"; 
     
 }
