@@ -16,7 +16,7 @@ bundle edit_line resolv_conf_edit
     ".*";
 
   insert_lines:
-     "#Autoconfigured by $(sys.cf_version)"
+     "#Autoconfigured by $(sys.cf_version)";
      "search webhuis.nl"; 
      "nameserver 10.168.0.17"; 
     
