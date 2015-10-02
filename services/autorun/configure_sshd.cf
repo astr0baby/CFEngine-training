@@ -4,6 +4,7 @@ bundle agent configure_sshd
 files: 
 "/etc/ssh/sshd_config"
 comment => "Configure sshd server",
+perms => mog("0640", "root", "root"), 
 edit_line => sshd_conf_edit, 
 classes   => if_repaired("restart_sshd"),
 classes   => if_ok("check_ssh_state"); 
@@ -20,7 +21,6 @@ service_policy => "start";
 
 reports:
 "$(this.bundle) /etc/ssh/sshd_config";
-"$(if_ok) status of ssh";
 }
 
 bundle edit_line sshd_conf_edit 
