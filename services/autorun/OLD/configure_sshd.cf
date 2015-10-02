@@ -1,0 +1,39 @@
+bundle agent configure_sshd
+{
+vars:
+"sshd[Protocol]"          string => "2";
+"sshd[X11Forwarding]"     string => "no";
+"sshd[UseDNS]"            string => "no";
+"sshd[PermitRootLogin]"   string => "no"; 
+"sshd[RSAAuthentication]" string => "yes";
+"sshd[PubkeyAuthentication]" string => "yes";
+"sshd[PasswordAuthentication]" string => "no";
+"sshd[AuthorizedKeysFile]"   string => "%h/.ssh/authorized_keys";
+
+files: 
+"/etc/ssh/sshd_config"
+handle  => "sshd_config", 
+comment => "Harden sshd config",
+edit_line => set_config_values("configure_sshd.sshd"),
+classes   => if_repaired("restart_sshd");
+
+reports:
+"$(this.bundle) Configure /etc/ssh/sshd_conf";
+
+
+commands:
+restart_sshd::
+"/etc/init.d/ssh restart"
+     handle => "restart_sshd",
+    comment => "restarting sshd";
+
+}
+
+bundle edit_line sshd_conf_edit
+{
+
+  insert_lines:
+    "#Autoconfigured by CFEngine ver. $(sys.cf_version)";
+}
+
+
