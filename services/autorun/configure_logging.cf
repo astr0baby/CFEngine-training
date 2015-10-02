@@ -1,0 +1,172 @@
+bundle agent configure_logging 
+{
+
+debian:: 
+files: 
+"/etc/logrotate.conf"
+comment => "Configure logrotate conf",
+edit_line => logrotate_conf_edit, 
+classes   => if_repaired("restart_rsyslog");
+
+reports:
+"Configure /etc/logrotate.conf";
+
+commands:
+restart_rsyslog::
+"/etc/init.d/rsyslog restart"
+     handle => "restart_rsyslog",
+     comment => "restarting rsyslog";
+
+
+files: 
+"/etc/logrotate.d/apt" 
+comment => "Configure apt logging", 
+editline => apt_logrotate_edit,
+
+reports: 
+"Configure /etc/logrotate.d/apt" 
+
+files:
+"/etc/logrotate.d/dpkg"
+comment => "Configure dpkg logging",
+editline => dpkg_logrotate_edit,
+
+reports:
+"Configure /etc/logrotate.d/dpkg"
+
+files:
+"/etc/logrotate.d/rsyslog"
+comment => "Configure rsyslog logging",
+editline => rsyslog_logrotate_edit,
+
+reports:
+"Configure /etc/logrotate.d/rsyslog"
+
+commands:
+restart_rsyslog::
+"/etc/init.d/rsyslog restart"
+     handle => "restart_rsyslog",
+     comment => "restarting rsyslog";
+
+}
+
+bundle edit_line logrotate_conf_edit 
+{
+  delete_lines:
+    ".*";
+
+insert_lines:
+"#Autoconfigured by CFEngine ver. $(sys.cf_version)";
+"weekly";
+"rotate 4";
+"create";
+"include /etc/logrotate.d";
+"/var/log/wtmp {";
+"missingok";
+"monthly";
+"create 0664 root utmp";
+"rotate 1";
+"}";
+"/var/log/btmp {";
+"missingok";
+"monthly";
+"create 0660 root utmp";
+"rotate 1";
+"}";
+
+
+}
+
+bundle edit_line apt_logrotate_edit 
+{
+  delete_lines:
+    ".*";
+insert_lines:
+"#Autoconfigured by CFEngine ver. $(sys.cf_version)";
+"/var/log/apt/term.log {";
+"  rotate 12";
+"  monthly";
+"  compress";
+"  missingok";
+"  notifempty";
+"}";
+"/var/log/apt/history.log {";
+"  rotate 12";
+"  monthly";
+"  compress";
+"  missingok";
+"  notifempty";
+"}";
+
+}
+
+bundle edit_line dpkg_logrotate_edit
+{
+  delete_lines:
+    ".*";
+insert_lines:
+"#Autoconfigured by CFEngine ver. $(sys.cf_version)";
+"/var/log/dpkg.log {";
+"        monthly";
+"        rotate 12";
+"        compress";
+"        delaycompress";
+"        missingok";
+"        notifempty";
+"        create 644 root root";
+"}";
+"/var/log/alternatives.log {";
+"        monthly";
+"        rotate 12";
+"        compress";
+"        delaycompress";
+"        missingok";
+"        notifempty";
+"        create 644 root root";
+"}";
+
+}
+
+bundle edit_line rsyslog_logrotate_edit
+{
+  delete_lines:
+    ".*";
+insert_lines:
+"#Autoconfigured by CFEngine ver. $(sys.cf_version)";
+"/var/log/syslog";
+"{";
+"        rotate 7";
+"        daily";
+"        missingok";
+"        notifempty";
+"        delaycompress";
+"        compress";
+"        postrotate";
+"                invoke-rc.d rsyslog rotate > /dev/null";
+"        endscript";
+"}";
+"/var/log/mail.info";
+"/var/log/mail.warn";
+"/var/log/mail.err";
+"/var/log/mail.log";
+"/var/log/daemon.log";
+"/var/log/kern.log";
+"/var/log/auth.log";
+"/var/log/user.log";
+"/var/log/lpr.log";
+"/var/log/cron.log";
+"/var/log/debug";
+"/var/log/messages";
+"{";
+"        rotate 4";
+"        weekly";
+"        missingok";
+"        notifempty";
+"        compress";
+"        delaycompress";
+"        sharedscripts";
+"        postrotate";
+"                invoke-rc.d rsyslog rotate > /dev/null";
+"        endscript";
+"}";
+}
