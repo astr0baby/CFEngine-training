@@ -16,7 +16,7 @@ files:
 }
 
 
-body changes detect_all_change
+body  detect_all_change
 {
   hash           => "md5";
   report_changes => "content";
