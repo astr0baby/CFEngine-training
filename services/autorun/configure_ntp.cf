@@ -6,7 +6,7 @@ vars:
 files: 
 "/etc/ntp.conf"
 comment => "Configure ntp client",
-edit_line => ntp_conf_edit 
+edit_line => ntp_conf_edit, 
 classes   => if_repaired("restart_ntp");
 
 reports:
