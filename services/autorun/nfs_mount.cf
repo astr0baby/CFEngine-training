@@ -1,10 +1,13 @@
 bundle agent nfs_mount 
 
 {
+
 storage:
 
   "/mnt" mount  => nfs("nfsutl01.webhuis.nl","/var/local/webapps");
 
+reports: 
+"Executing nfs mount";
 }                
 
 
