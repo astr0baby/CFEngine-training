@@ -16,7 +16,7 @@ commands:
 start_tomcat::
 "/etc/init.d/tomcat6 start"
      handle => "start_tomcat",
-     comment => "starting tomcat";
+     comment => "starting tomcat",
      classes   => if_repaired("start_tomcat");
 
 services: 
