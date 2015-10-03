@@ -2,15 +2,7 @@ bundle agent nfs_mount {
     storage:
         nfsutl01.webhuis.nl::
             "/mnt/"
-                handle   => "app_aix_mnt_repo_aix",
                 comment  => "$(this.promiser) mount check",            
                 mount    => nfs("nfsutl01.webhuis.nl","/");
 }
 
-body mount nfs(server,source)
-{
-mount_type => "nfs3";
-mount_source => "$(source)";
-mount_server => "$(server)";
-edit_fstab => "true";
-}
