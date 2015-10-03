@@ -1,6 +1,10 @@
 bundle agent add_repositories
 {
   files:
+    centos_6::
+      "/etc/yum.conf"
+      edit_line => edit_yum_repo_proxy;      
+
     debian::
       "/etc/apt/apt.conf"
       edit_line	=> edit_apt_repo_proxy; 

@@ -6,7 +6,16 @@
 
 bundle agent platform 
 {
+
+ vars:
+  "Server roles" slist => { "webserver"};
+
+classes:
+  "webserver" or => { "cfeagt2211" };
+
+
 methods:
+any::
         "OS Common rules" usebundle => os_common;
         #####################################################
         # Install packages 
@@ -30,7 +39,12 @@ methods:
         ####################################################
         # Custom bundles  - testing 
         ###################################################
-        "Testing passwd policy change" usebundle => passwd_compliance;
+        #"Testing passwd policy change" usebundle => passwd_compliance;
+
+methods:
+webserver:: 
+"Testing passwd policy change" usebundle => passwd_compliance;
+
 
 reports: 
 "$(sys.flavor), $(this.bundle): os-common log";  
