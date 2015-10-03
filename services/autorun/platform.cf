@@ -7,9 +7,6 @@
 bundle agent platform 
 {
 
-classes:
-  "webservers" or => { "cfeagt2211.webhuis.nl" };
-
 
 methods:
 any::
@@ -20,8 +17,8 @@ any::
  
         #"Repositories" usebundle => add_repositories; 
         "OpenSSH server installation" usebundle => add_sshd;
-        "Browser installation" usebundle => add_browsers;
-        "Tools installation" usebundle => add_tools;
+        #"Browser installation" usebundle => add_browsers;
+        #"Tools installation" usebundle => add_tools;
         "NTP installation" usebundle => add_ntp;
         "NFS tools installation" usebundle => add_nfs; 
         #####################################################
@@ -38,10 +35,12 @@ any::
         ###################################################
         #"Testing passwd policy change" usebundle => passwd_compliance;
 
-webservers:: 
+centos_6:: 
 "Testing passwd policy change" usebundle => passwd_compliance;
 "Add nfs tools" usebundle => add_nfs; 
 "Mount nfs promise" usebundle => nfs_mount;
+
+
 
 reports: 
 "$(sys.fqhost), $(this.bundle): os-common log";  
