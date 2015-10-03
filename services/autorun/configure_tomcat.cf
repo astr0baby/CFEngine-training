@@ -1,15 +1,9 @@
 bundle agent configure_tomcat 
 {
 
-vars:
-  "files" slist => { "/mnt/jenkins.war" };
-
 files:
-  "$(files)"
-    copy_from => local_cp("$(files)");
-
-
- "/var/lib/tomcat/"
+    "/var/lib/tomcat6/webapps/jenkins.war"
+        copy_from	=> local_cp("/mnt/nfs/jenkins.war");
 
 
 commands:
