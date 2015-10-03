@@ -7,11 +7,12 @@
 bundle agent platform 
 {
 
- vars:
-  "Server roles" slist => { "webserver"};
+vars:
+webservers::
+  "Server roles" slist => { "cfeagt2211"};
 
 classes:
-  "webserver" or => { "cfeagt2211" };
+  "webservers" or => {$(sys.fqhost)};
 
 
 methods:
@@ -42,7 +43,7 @@ any::
         #"Testing passwd policy change" usebundle => passwd_compliance;
 
 methods:
-webserver:: 
+webservers:: 
 "Testing passwd policy change" usebundle => passwd_compliance;
 
 reports: 
