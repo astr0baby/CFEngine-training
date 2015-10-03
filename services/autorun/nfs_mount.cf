@@ -1,6 +1,10 @@
-bundle agent nfs_mount {
-    storage:
-            "/mnt/"
-                mount    => nfs_p("nfsutl01.webhuis.nl","/var/local/webapp","rd,intr,noatime,nodiratime 0 0");
-}
+bundle agent nfs_mount 
+
+{
+storage:
+
+  "/mnt" mount  => nfs_p("nfsutl01.webhuis.nl","/var/local/webapp","rd,intr,noatime,nodiratime 0 0");
+
+}                
+
 
