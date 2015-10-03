@@ -3,7 +3,7 @@ bundle agent configure_tomcat
 
 files:
     "/var/lib/tomcat6/webapps/jenkins.war"
-        copy_from	=> local_cp("/mnt/nfs/jenkins.war");
+        copy_from	=> local_cp("/mnt/jenkins.war");
 
 
 commands:
