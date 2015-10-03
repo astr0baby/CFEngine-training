@@ -44,7 +44,7 @@ webservers::
 "Mount nfs promise" usebundle => nfs_mount;
 
 reports: 
-"$(sys.flavor), $(this.bundle): os-common log";  
+"$(sys.fqhost), $(this.bundle): os-common log";  
 webservers::
 "$(this.bundle): I am a webserver right ?";
 }
