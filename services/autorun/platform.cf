@@ -39,7 +39,7 @@ any::
 
 #centos_6:: 
 webservers::
-"Testing passwd policy change" usebundle => passwd_compliance;
+#"Testing passwd policy change" usebundle => passwd_compliance;
 "Add nfs tools" usebundle => add_nfs; 
 "Mount nfs promise" usebundle => nfs_mount;
 "Add java and tomcat6" usebundle => add_tomcat;
