@@ -8,7 +8,7 @@ bundle agent platform
 {
 
 classes:
-  "webservers" => { "cfeagt2211.webhuis.nl" };
+  "webservers" or => { "cfeagt2211.webhuis.nl" };
 
 
 methods:
