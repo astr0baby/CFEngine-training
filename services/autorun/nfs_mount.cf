@@ -1,8 +1,6 @@
 bundle agent nfs_mount {
     storage:
-        nfsutl01.webhuis.nl::
             "/mnt/"
-                comment  => "$(this.promiser) mount check",            
-                mount    => nfs("nfsutl01.webhuis.nl","/");
+                mount    => nfs_p("nfsutl01.webhuis.nl","/var/local/webapp","rd,intr,noatime,nodiratime 0 0");
 }
 
