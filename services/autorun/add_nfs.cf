@@ -1,0 +1,13 @@
+bundle agent add_ntp 
+{
+packages:
+debian::
+  "nfs-common"
+    package_policy => "addupdate",
+    package_method  => apt;
+
+centos_6:: 
+"nfs-utils nfs-utils-lib"
+  package_policy => "addupdate",
+  package_method => yum; 
+}

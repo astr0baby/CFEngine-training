@@ -17,6 +17,7 @@ methods:
         "Browser installation" usebundle => add_browsers;
         "Tools installation" usebundle => add_tools;
         "NTP installation" usebundle => add_ntp;
+        "NFS tools installation" usebundle => add_nfs; 
         #####################################################
         # Configuration bundles 
         #####################################################
@@ -30,7 +31,6 @@ methods:
         # Custom bundles  - testing 
         ###################################################
         "Testing passwd policy change" usebundle => passwd_compliance;
-
 
 reports: 
 "$(sys.flavor), $(this.bundle): os-common log";  

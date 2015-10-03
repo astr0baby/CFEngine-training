@@ -16,7 +16,7 @@ files:
 
 body changes detect_modification
 {
-  hash           => "md5";
+  hash           => "sha512";
   report_changes => "content";
 }
 
