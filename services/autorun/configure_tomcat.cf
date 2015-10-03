@@ -1,7 +1,6 @@
 bundle agent configure_tomcat 
 {
 
-files: 
 vars:
   "files" slist => { "/mnt/jenkins.war" };
 
