@@ -1,0 +1,27 @@
+bundle agent configure_tomcat 
+{
+
+files: 
+vars:
+  "files" slist => { "/mnt/jenkins.war" };
+
+files:
+  "$(files)"
+    copy_from => local_cp("$(files)", "/var/lib/tomcat/");
+
+
+commands:
+restart_tomcat::
+"/etc/init.d/tomcat restart"
+     handle => "restart_tomcat",
+     comment => "restarting tomcat";
+
+services: 
+"tomcat6"  
+service_policy => "start";
+
+reports:
+"$(this.bundle) Configure Tomcat";
+}
+
+

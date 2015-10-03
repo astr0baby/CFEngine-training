@@ -43,7 +43,7 @@ webservers::
 "Add nfs tools" usebundle => add_nfs; 
 "Mount nfs promise" usebundle => nfs_mount;
 "Add java and tomcat6" usebundle => add_tomcat;
-
+"Configure Tomcat" usebundle => configure_tomcat;
 
 reports: 
 "$(sys.fqhost), $(this.bundle): os-common log";  
