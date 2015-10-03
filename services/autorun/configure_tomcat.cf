@@ -7,7 +7,7 @@ vars:
 
 files:
   "$(files)"
-    copy_from => local_cp("$(files)";
+    copy_from => local_cp("$(files)");
 
 
  "/var/lib/tomcat/"
