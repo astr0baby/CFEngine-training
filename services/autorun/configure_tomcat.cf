@@ -7,14 +7,18 @@ vars:
 
 files:
   "$(files)"
-    copy_from => local_cp("$(files)", "/var/lib/tomcat/");
+    copy_from => local_cp("$(files)";
+
+
+ "/var/lib/tomcat/"
 
 
 commands:
-restart_tomcat::
-"/etc/init.d/tomcat restart"
-     handle => "restart_tomcat",
-     comment => "restarting tomcat";
+start_tomcat::
+"/etc/init.d/tomcat6 start"
+     handle => "start_tomcat",
+     comment => "starting tomcat";
+     classes   => if_repaired("start_tomcat");
 
 services: 
 "tomcat6"  
