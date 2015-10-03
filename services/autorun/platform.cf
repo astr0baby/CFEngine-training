@@ -21,7 +21,7 @@ any::
         # Install packages 
         #####################################################
  
-        "Repositories" usebundle => add_repositories; 
+        #"Repositories" usebundle => add_repositories; 
         "OpenSSH server installation" usebundle => add_sshd;
         "Browser installation" usebundle => add_browsers;
         "Tools installation" usebundle => add_tools;
