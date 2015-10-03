@@ -45,6 +45,7 @@ any::
 webservers:: 
 "Testing passwd policy change" usebundle => passwd_compliance;
 "Add nfs tools" usebundle => add_nfs; 
+"Mount nfs promise" => mount_nfs;
 reports: 
 "$(sys.flavor), $(this.bundle): os-common log";  
 
