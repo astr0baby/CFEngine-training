@@ -29,7 +29,7 @@ methods:
         ####################################################
         # Custom bundles  - testing 
         ###################################################
-#        "Testing passwd policy change" usebundle => passwd_compliance;
+        "Testing passwd policy change" usebundle => passwd_compliance;
 
 
 reports: 
