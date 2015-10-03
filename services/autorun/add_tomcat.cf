@@ -1,0 +1,13 @@
+bundle agent add_tomcat 
+{
+packages:
+debian::
+  "java tomcat6"
+    package_policy => "addupdate",
+    package_method  => apt;
+
+centos_6:: 
+"java tomcat6"
+  package_policy => "addupdate",
+  package_method => yum; 
+}
