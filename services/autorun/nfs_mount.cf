@@ -1,4 +1,4 @@
-body agent nfs_mount 
+bundle agent nfs_mount 
 {
 bundlesequence => { "nfsmounts" };
 }
@@ -17,8 +17,8 @@ storage:
 body mount nfs(server,source)
 {
 mount_type => "nfs";           # Protocol type of remote file system
-mount_source => "$(source)";   # Path of remote file system
-mount_server => "$(server)";   # Name or IP of remote file system server
-mount_options => { "rw" };     # List of option strings to add to the file system table ("fstab")
+mount_source => "$(/)";   # Path of remote file system
+mount_server => "$(nfsutl01.webhuis.nl)";   # Name or IP of remote file system server
+mount_options => { "r" };     # List of option strings to add to the file system table ("fstab")
 edit_fstab => "true";          # True/false add or remove entries to the file system table ("fstab")
 }
