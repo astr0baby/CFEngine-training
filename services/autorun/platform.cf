@@ -45,5 +45,6 @@ webservers::
 
 reports: 
 "$(sys.flavor), $(this.bundle): os-common log";  
-
+webservers::
+"$(this.bundle): I am a webserver right ?";
 }
