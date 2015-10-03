@@ -1,12 +1,4 @@
-body common control
-
-{
-      bundlesequence => { "mounts" };
-}
-
-#
-
-bundle agent mounts
+bundle agent nfs_mount 
 
 {
   storage:
