@@ -1,4 +1,4 @@
-bundle agent add_ntp 
+bundle agent add_nfs 
 {
 packages:
 debian::
