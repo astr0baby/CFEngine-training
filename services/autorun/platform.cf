@@ -8,10 +8,10 @@ bundle agent platform
 {
 
 vars:
-"Server roles" slist => {"cfeagt2211.webhuis.nl"};
+"server_roles" slist => {"cfeagt2211.webhuis.nl"};
 
 classes:
-  "webservers" or => {$(sys.fqhost)};
+  "webservers" or => {$(server_roles)};
 
 
 methods:
